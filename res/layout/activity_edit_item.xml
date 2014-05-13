@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.simpletodo.EditItemActivity">
+
+ 
+   
+    <EditText
+        android:id="@+id/itemLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Edit Item Below:"
+        android:singleLine="false" >
+
+    </EditText>
+    <EditText
+        android:id="@+id/todoItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/itemLabel"
+        android:layout_marginTop="15dp"
+        android:hint="Edit Text" 
+        android:ems="10" >
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/saveItemButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/todoItem"
+        android:layout_marginTop="30dp"
+        android:onClick="saveItem"
+        android:text="Save" />
+
+    
+
+</RelativeLayout>
