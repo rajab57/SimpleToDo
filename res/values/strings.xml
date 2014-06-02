@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Simple ToDo</string>
+    <string name="app_name">Simply ToDo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_edit_item">Edit Item</string>
+    <string name="radio_priority_low">LOW</string>
+    <string name="radio_priority_medium">MEDIUM</string>
+    <string name="radio_priority_HIGH">HIGH</string>
 
 </resources>

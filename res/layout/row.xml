@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="horizontal"
+ android:layout_width="fill_parent"
+ android:gravity="center"
+ android:id="@+id/container"
+ android:layout_height="?android:attr/listPreferredItemHeight">
+
+    <ImageView
+        android:id="@+id/priorityImage"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="5sp"
+        android:paddingLeft="10sp"
+        android:scaleType="center"
+        android:focusable="false"
+        android:clickable="true"
+        android:background="@android:color/white"
+        android:src="@drawable/low" />
+   
+  <TextView
+      android:id="@+id/itemText"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="1"
+      android:gravity="center"
+      android:focusable="false"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:textSize="30sp"
+      android:textAlignment="viewStart"
+      android:textStyle="bold" />
+
+   
+   
+   <TextView
+       android:id="@+id/itemDueDate"
+       android:layout_height="fill_parent"
+       android:layout_width="wrap_content"
+       android:layout_marginRight="5sp"
+       android:paddingRight="10sp"
+       android:scaleType="center"
+       android:textSize="12sp"
+       android:focusable="false"
+       android:textStyle="normal"
+       android:gravity="center"
+        >
+   </TextView>
+</LinearLayout>

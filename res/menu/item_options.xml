@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_setduedate"
+        android:icon="@drawable/cal3"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Due Date"/>
+    <item
+        android:id="@+id/action_setPriority"
+        android:icon="@drawable/priority3"
+        android:showAsAction="always"
+        android:title="Priority">
+    </item>
+    <item
+        android:id="@+id/action_setReminder"
+        android:icon="@drawable/clock6"
+        android:showAsAction="always"
+        android:title="Reminder">
+    </item>
+    
+      <item
+        android:id="@+id/action_deleteItem"
+        android:icon="@drawable/trash3"
+        android:showAsAction="always"
+        android:title="Remove">
+    </item>
+ <!--     <item
+        android:id="@+id/action_doneItem"
+        android:icon="@drawable/done"
+        android:showAsAction="always"
+        android:title="Remove">
+    </item> -->
+
+</menu>

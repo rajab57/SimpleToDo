@@ -12,32 +12,81 @@
         android:id="@+id/lvItems"
         android:layout_width="match_parent"
         android:layout_height="380dp"
+        android:layout_alignLeft="@+id/itemEntryView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-
+        android:layout_below="@+id/itemEntryView"
+        android:layout_marginTop="@dimen/topMargin">
     </ListView>
 
-    <EditText
-        android:id="@+id/etNewItem"
-        android:layout_width="wrap_content"
+    <LinearLayout 
+        android:id="@+id/itemEntryView"
+        android:layout_marginTop="@dimen/topMargin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/lvItems"
-        android:layout_below="@+id/lvItems"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Edit Text" >
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+        
+         <EditText
+             android:id="@+id/etNewItem"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="75"
+             android:background="@drawable/customborder"
+             android:textSize="@dimen/smallTextSize"
+             android:hint="Add a Task"
+             android:imeOptions="actionDone"
+             android:inputType="textCapSentences"
+             tools:ignore="HardcodedText" >
 
-        <requestFocus />
-    </EditText>
+        </EditText>
 
-    <Button
-        android:id="@+id/btnAddItem"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnAddItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:onClick="addTodoItem"
+            android:textSize="@dimen/smallTextSize"
+            android:text="Add"/>
+
+       
+    </LinearLayout>
+    
+    
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/etNewItem"
-        android:onClick="addTodoItem"
-        android:text="Add" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/sortPriorityButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sortByPriority"
+            android:text="High Priority"
+            android:textSize="@dimen/tinyTextSize" />
+
+        <Button
+            android:id="@+id/sortLastAddedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sortByLastAdded"
+            android:text="Last Added"
+            android:textSize="@dimen/tinyTextSize" />
+
+        <Button
+            android:id="@+id/sortDueDateButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sortByDueDate"
+            android:text="Due Date"
+            android:textSize="@dimen/tinyTextSize" />
+    </LinearLayout>
 
 </RelativeLayout>

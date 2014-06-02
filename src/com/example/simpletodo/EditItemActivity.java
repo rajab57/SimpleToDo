@@ -17,41 +17,51 @@ import android.widget.EditText;
  */
 public class EditItemActivity extends Activity {
 	
-	private String name;
+//	private String name;
 	private int position;
 	private EditText editItem;
+	private TodoItem todoItem;
+	private EditText editDueDate;
+	private EditText editPriority;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		 name = getIntent().getStringExtra("name");
+		setContentView(R.layout.activity_edit_item);
+//		 name = getIntent().getStringExtra("name");
 		 position = getIntent().getIntExtra("position", 0);
-		 setContentView(R.layout.activity_edit_item);
-		 editItem = (EditText) findViewById(R.id.todoItem);
+		 todoItem = (TodoItem) getIntent().getSerializableExtra("item");
 		 
-		 editItem.setText(name);
+		 editItem = (EditText) findViewById(R.id.editTodoItem); 
+		 editItem.setText(todoItem.getItemName());
+		 
+		 editDueDate = ( EditText) findViewById(R.id.editDueDate);
+		 editDueDate.setText(todoItem.getDueDate());
+		 
+		 editPriority = ( EditText) findViewById(R.id.editPriority);
+		 editPriority.setText(todoItem.getPriority().name());
+
 	}
 
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_item, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.edit_item, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	public void saveItem(View v) {
 		Intent data = new Intent();

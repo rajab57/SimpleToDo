@@ -1,0 +1,9 @@
+<resources>
+
+    <color name="RSSOrange">#FF7400</color>
+    <color name="actionbar_background">#FF7400</color>
+    <color name="ActualShadowsGrey">#36393D</color>
+    <color name="white">#FFFFFF</color>
+    <color name="ShadowsGrey">#5b6067</color>
+
+</resources>
