@@ -65,16 +65,17 @@ portrait orientation since it looks better in appearance.
 10. Difference between app.DialogFragment and v4.DialogFragment
 
 ## Demo
-![Alt-text](screenshots/mainView.png?raw=true "Main Screen")
-![Alt-text](screenshots/addItem.png?raw=true "Add an Item")
-![Alt-text](screenshots/selectItem.png?raw=true "Select an item with onItemLongClick)
-![Alt-text](screenshots/setdueDate.png?raw=true "Set Due date for an item")
-![Alt-text](screenshots/setPriority.png?raw=true "Set priority")
-![Alt-text](screenshots/setReminder.png?raw=true "Set Reminder")
-![Alt-text](screenshots/playAlarm.png?raw=true "Sound Alarm")
-![Alt-text](screenshots/addNewItem.png?raw=true "Add New Item")
-![Alt-text](screenshots/afterNewItemAdded.png?raw=true "View after adding new Item")
-![Alt-text](screenshots/sortedByPriority.png?raw=true "Sorted by highest priority")
+<img src="https://github.com/rutvijkumarshah/codepath_application/raw/master/screeshots/todo_main.png" width="300" />
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/mainView.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/addItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/selectItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setdueDate.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setPriority.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setReminder.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/playAlarm.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/addNewItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/afterNewItemAdded.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/sortedByPriority.png?raw=true" width="300"/>
 
 
 
