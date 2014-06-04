@@ -65,17 +65,16 @@ portrait orientation since it looks better in appearance.
 10. Difference between app.DialogFragment and v4.DialogFragment
 
 ## Demo
-<img src="https://github.com/rutvijkumarshah/codepath_application/raw/master/screeshots/todo_main.png" width="300" />
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/mainView.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/addItem.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/selectItem.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setdueDate.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setPriority.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/setReminder.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/playAlarm.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/addNewItem.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/afterNewItemAdded.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/tree/master/screenshots/sortedByPriority.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/mainView.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/addItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/selectItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setdueDate.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setPriority.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setReminder.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/playAlarm.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/addNewItem.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/afterNewItemAdded.png?raw=true" width="300"/>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/sortedByPriority.png?raw=true" width="300"/>
 
 
 
