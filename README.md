@@ -66,14 +66,23 @@ portrait orientation since it looks better in appearance.
 
 ## Demo
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/mainView.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/addItem.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/selectItem.png?raw=true" width="300"/>
-<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setdueDate.png?raw=true" width="300"/>
+<span> </span>
+<img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setDueDate.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setPriority.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/setReminder.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/playAlarm.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/addNewItem.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/afterNewItemAdded.png?raw=true" width="300"/>
+<span> </span>
 <img src="https://github.com/rajab57/SimpleToDo/raw/master/screenshots/sortedByPriority.png?raw=true" width="300"/>
 
 
