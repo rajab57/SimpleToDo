@@ -93,6 +93,13 @@ public class TodoItemsList {
 		item.setDueDate(duedate);
 	}
 	
+	
+	public void setDueDate(int index, String dueDate) {
+		assert(index != -1);
+		TodoItem item = get(index);
+		item.setDueDate(dueDate);
+	}
+	
 	public void setPriority(int index, String level) {
 		assert (index != -1);
 		TodoItem item = get(index);

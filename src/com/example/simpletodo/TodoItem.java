@@ -15,7 +15,7 @@ public class TodoItem implements Serializable {
 	private String mItemName = "";
 	private PriorityLevels mPriority = PriorityLevels.LOW;
 	private String mDueDate = "None"; // Format yyyy-mm-dd
-	private transient long mDueDateInEpoch = 0;
+	private transient long mDueDateInEpoch = 0; // do not access this variable directly ( hack TODO)
 	private long mReminder = -1;
 	private long mTimestamp; // in epoch
 
@@ -62,6 +62,25 @@ public class TodoItem implements Serializable {
 		return reportDate;
 
 	}
+	
+	public static String formatDate(long epoch) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String reportDate = df.format(new Date(epoch));
+		return reportDate;
+
+	}
+	
+	public static String formatDateTime(long epoch) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String reportDate = df.format(new Date(epoch));
+		return reportDate;
+
+	}
+	public static String formatDate(int year, int month, int day ) {
+		String reportDate = String.format("%s-%s-%s" , year, month, day);
+		return reportDate;
+
+	}
 
 	public static String getTodayDate() {
 		Calendar cal = Calendar.getInstance();
@@ -98,7 +117,7 @@ public class TodoItem implements Serializable {
 
 	public void setDueDate(String duedate) {
 		mDueDate = duedate;
-		convertToEpoch(duedate);
+		mDueDateInEpoch = convertToEpoch(duedate);
 	}
 
 	public String getDueDate() {
@@ -126,19 +145,29 @@ public class TodoItem implements Serializable {
 		return mTimestamp;
 	}
 
-	private void convertToEpoch(String dt) {
+	private long convertToEpoch(String dt) {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		long epoch = 0;
 		try {
-			Date date = df.parse(dt);
-			mDueDateInEpoch = date.getTime();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(df.parse(dt));
+			cal.set(Calendar.HOUR_OF_DAY,0);
+			cal.set(Calendar.MINUTE,0);
+			cal.set(Calendar.SECOND,0);
+			cal.set(Calendar.MILLISECOND,0);
+			epoch = cal.getTimeInMillis();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return epoch;
 
 	}
 
 	public long getDueDateInEpoch() {
+		// since it is transient , it is not persistent, need a better design
+		if ( mDueDateInEpoch < 1 ) 
+			mDueDateInEpoch = convertToEpoch(mDueDate);
 		return mDueDateInEpoch;
 	}
 
@@ -148,7 +177,16 @@ public class TodoItem implements Serializable {
 		String[] parts = mDueDate.split("-");
 		String displayStr = parts[1] + "/" + parts[2];
 		// TODO Check for past due date
-		if (mDueDate.equals(TodoItem.getTodayDate()))
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, 0);
+		today.set(Calendar.MINUTE, 0);
+		today.set(Calendar.SECOND,0);
+		today.set(Calendar.MILLISECOND,0);
+		long todaytime = today.getTimeInMillis();
+		
+		if (getDueDateInEpoch() < todaytime )
+			displayStr = TodoItemsList.DisplayDate.PastDue.name();
+		else if (mDueDate.equals(TodoItem.getTodayDate()))
 			displayStr = TodoItemsList.DisplayDate.Today.name();
 		else if (mDueDate.equals(TodoItem.getTomorrowDate()))
 			displayStr = TodoItemsList.DisplayDate.Tomorrow.name();

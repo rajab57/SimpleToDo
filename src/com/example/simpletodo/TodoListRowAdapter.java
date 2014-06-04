@@ -147,6 +147,12 @@ public class TodoListRowAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 		fileHandler.saveItemsToFile(filesDir, items.getItems());
 	}
+	
+	public void setDueDate(String dueDate) {
+		items.setDueDate(selectedPosition, dueDate);
+		notifyDataSetChanged();
+		fileHandler.saveItemsToFile(filesDir, items.getItems());
+	}
 
 	public void setPriority(String level) {
 		items.setPriority(selectedPosition, level);

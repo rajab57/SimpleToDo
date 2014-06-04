@@ -2,12 +2,10 @@ package com.example.simpletodo;
 
 import java.io.File;
 import java.util.Calendar;
-import java.util.TimeZone;
 
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.PendingIntent;
@@ -17,10 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewConfiguration;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -36,7 +32,7 @@ import android.widget.TimePicker;
  *          allows you to add and remove items from the list.
  * 
  */
-public class TodoActivity extends Activity {
+public class TodoActivity extends Activity implements DueDatePickerFragment.DueDatePickerListener {
 	
 	private static final String TAG = "TodoActivity";
 
@@ -130,36 +126,11 @@ public class TodoActivity extends Activity {
 	}
 
 	public void viewCalendar() {
-		DialogFragment dialogFragment = new StartDatePicker();
-		dialogFragment.show(getFragmentManager(), "dialog");
+		DialogFragment dialogFragment = new DueDatePickerFragment(itemsAdapter.getSelectedItem().getDueDateInEpoch());
+		dialogFragment.show(getFragmentManager(), "duedatedialog");
 
 	}
 
-	class StartDatePicker extends DialogFragment implements
-			DatePickerDialog.OnDateSetListener {
-
-		int startYear;
-		int startMonth;
-		int startDay;
-
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-			Calendar c = Calendar.getInstance();
-			startYear = c.get(Calendar.YEAR);
-			startMonth = c.get(Calendar.MONTH);
-			startDay = c.get(Calendar.DAY_OF_MONTH);
-			// Use the current date as the default date in the picker
-			DatePickerDialog dialog = new DatePickerDialog(TodoActivity.this,
-					this, startYear, startMonth, startDay);
-			return dialog;
-		}
-
-		public void onDateSet(DatePicker view, int year, int monthOfYear,
-				int dayOfMonth) {
-			// Note: month is 0 based.
-			itemsAdapter.setDueDate(year, monthOfYear + 1, dayOfMonth);
-		}
-	}
 
 	public void viewPriority() {
 		// final AlertDialog priorityDialog = null;
@@ -198,7 +169,7 @@ public class TodoActivity extends Activity {
 	public void viewAlarm() {
 		final Dialog dialog = new Dialog(this);
 		dialog.setContentView(R.layout.date_time_picker);
-		dialog.setTitle("Set Alarm");
+		dialog.setTitle("Set Reminder");
 		Button saveDate = (Button)dialog.findViewById(R.id.btnSave);
 		saveDate.setOnClickListener(new OnClickListener() {
 			@Override
@@ -228,19 +199,36 @@ public class TodoActivity extends Activity {
         // Unique ID for each Item. This cancels all previous alarms associated 
         // with the item. Note: One alarm for each item.
         
-        Log.d(TAG, "Alarm set for " + cal.getTimeInMillis());
-        Log.d(TAG, "System time " + System.currentTimeMillis());
-        int alarmId = itemsAdapter.getSelectedItem().getId();
-        Log.d(TAG,  "Setting Alarm with ID " + alarmId);
-        String task = itemsAdapter.getSelectedItem().getItemName();
 
-       //Create a new PendingIntent and add it to the AlarmManager
+        int alarmId = itemsAdapter.getSelectedItem().getId();
+        Log.d(TAG, "Alarm set for " + cal.getTimeInMillis() + "for alarmId " + alarmId);
+        String task = itemsAdapter.getSelectedItem().getItemName();
+        
+        
+        scheduleAlarm(cal.getTimeInMillis());
+
+//       //Create a new PendingIntent and add it to the AlarmManager
+//        Intent intent = new Intent(this, AlarmActivity.class);
+//        intent.putExtra("task" ,task);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this, alarmId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+//        AlarmManager am = 
+//            (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
+//        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+//                pendingIntent);
+		
+	}
+	
+	
+	private void scheduleAlarm(long reminderInEpoch) {
+		int alarmId = itemsAdapter.getSelectedItem().getId();
+		String task = itemsAdapter.getSelectedItem().getItemName();
+	      //Create a new PendingIntent and add it to the AlarmManager
         Intent intent = new Intent(this, AlarmActivity.class);
         intent.putExtra("task" ,task);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, alarmId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         AlarmManager am = 
             (AlarmManager)getSystemService(Activity.ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+        am.set(AlarmManager.RTC_WAKEUP, reminderInEpoch,
                 pendingIntent);
 		
 	}
@@ -314,7 +302,8 @@ public class TodoActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long rowId) {
-				System.out.println("OnclickEvent");
+				itemsAdapter.unsetSelectedPosition();
+				getActionBar().hide();
 				Intent i = new Intent(TodoActivity.this, EditItemActivity.class);
 				i.putExtra("position", position);
 				TodoItem item = (TodoItem) parent.getItemAtPosition(position);
@@ -327,6 +316,7 @@ public class TodoActivity extends Activity {
 
 	}
 
+	// Save results from the Detail Item Activity (EditItemActivity.java) and persist the TodoItem data.
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// REQUEST_CODE is defined above
@@ -334,9 +324,30 @@ public class TodoActivity extends Activity {
 			// Extract name value from result extras
 			String name = data.getExtras().getString("name");
 			int position = data.getExtras().getInt("position");
+			String duedate = data.getExtras().getString("duedate");
+			long reminder = data.getExtras().getLong("reminder");
+			String priority =data.getExtras().getString("priority");
+			itemsAdapter.setSelectedPosition(position);
 			itemsAdapter.set(position, name);
+			itemsAdapter.setDueDate(duedate);
+			itemsAdapter.setReminder(reminder);
+			itemsAdapter.setPriority(priority);
+			if ( reminder > 0)
+				scheduleAlarm(reminder);
+			
+			itemsAdapter.unsetSelectedPosition();
+			getActionBar().hide();
+			
 
 		}
+	}
+
+
+
+	@Override
+	public void returnDate(int year, int month, int day) {
+		itemsAdapter.setDueDate(year, month , day);
+		
 	}
 
 	

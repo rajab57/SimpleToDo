@@ -28,63 +28,93 @@
         android:layout_toLeftOf="@+id/editTodoItem"
         android:ems="10"
         android:enabled="false"
-        android:hint="Task:"
-        android:singleLine="false" />
+        android:hint="Task:" />
     
     <!--  DUE DATE -->
-      <EditText
+      <TextView
         android:id="@+id/editDueDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/editTodoItem"
-        android:ems="10"
+        android:ems="8"
+        android:textSize="@dimen/smallTextSize"
         android:hint="None" />
 
     <EditText
         android:id="@+id/editDueDateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_alignBaseline="@+id/editDueDate"
         android:layout_alignBottom="@+id/editDueDate"
         android:layout_toLeftOf="@+id/editDueDate"
-        android:ems="10"
+        android:ems="12"
         android:enabled="false"
         android:hint="Due Date"
         android:singleLine="false" />
  
        <!--  PRIORITY -->
-      <EditText
+      <TextView
         android:id="@+id/editPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/editDueDate"
-        android:ems="10"
+        android:ems="8"
+        android:textSize="@dimen/smallTextSize"
         android:hint="LOW" />
 
     <EditText
         android:id="@+id/editPriorityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_alignBaseline="@+id/editPriority"
         android:layout_alignBottom="@+id/editPriority"
         android:layout_toLeftOf="@+id/editPriority"
-        android:ems="10"
+        android:ems="12"
         android:enabled="false"
         android:hint="Priority"
         android:singleLine="false" />
     
     
+      <!--  REMINDER -->
+      <TextView
+        android:id="@+id/editReminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editPriority"
+        android:ems="8"
+        android:textSize="@dimen/smallTextSize"
+        android:hint="None" />
+
+    <EditText
+        android:id="@+id/editReminderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/editReminder"
+        android:layout_alignBottom="@+id/editReminder"
+        android:layout_toLeftOf="@+id/editReminder"
+        android:ems="12"
+        android:enabled="false"
+        android:hint="Reminder" />
+    
     <Button
         android:id="@+id/saveItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editDueDate"
-        android:layout_marginTop="30dp"
+        android:layout_alignRight="@+id/editTodoItemLabel"
+        android:layout_below="@+id/editReminder"
         android:onClick="saveItem"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="@dimen/medTextSize"
         android:text="Save" />
-    
 
 </RelativeLayout>
